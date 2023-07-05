@@ -1,0 +1,57 @@
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import { resolve } from 'path';
+import viteTsConfigPaths from 'vite-tsconfig-paths';
+import path from 'path';
+
+export default defineConfig({
+  cacheDir: '../../../node_modules/.vite/<%= name %>-<%= type %>',
+  build: {
+    target: 'esnext',
+    lib: {
+      // Could also be a dictionary or array of multiple entry points
+      entry: resolve(__dirname, 'src/index.ts'),
+      name: '<%= name %>',
+       formats: ['es'],
+      // the proper extensions will be added
+       fileName: (format) => `@daniela-nx-sandbox/<%= name %>-<%= type %>-${format}.js`,
+    },
+    rollupOptions: {
+      // make sure to externalize deps that shouldn't be bundled
+      // into your library
+      external: ['vue'],
+      output: {
+        // Provide global variables to use in the UMD build
+        // for externalized deps
+        globals: {
+          vue: 'Vue',
+        },
+      },
+    },
+  },
+  server: {
+    port: 3000,
+    host: 'localhost',
+    fs: {
+      // Allow serving files from one level up to the project root
+      allow: ['src/'],
+    },
+  },
+
+  preview: {
+    port: 3000,
+    host: 'localhost',
+  },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+    },
+  },
+
+  plugins: [
+    vue(),
+    viteTsConfigPaths({
+      root: './',
+    }),
+  ],
+});

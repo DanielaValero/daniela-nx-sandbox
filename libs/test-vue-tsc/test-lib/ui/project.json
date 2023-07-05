@@ -1,0 +1,98 @@
+{
+  "name": "test-lib-ui",
+  "$schema": "{workspaceRoot}/node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "/src",
+  "tags": ["scope:ui"],
+  "targets": {
+    "build": {
+      "executor": "@nrwl/vite:build",
+      "defaultConfiguration": "production",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/test-lib/ui"
+      },
+      "configurations": {
+        "development": {
+          "mode": "development"
+        },
+        "production": {
+          "mode": "production",
+          "filenameHashing": true,
+          "productionSourceMap": true,
+          "css": {
+            "extract": true,
+            "sourceMap": false
+          }
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/vite:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "browserTarget": "test-lib-ui:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "test-lib-ui:build:development",
+          "hmr": true
+        },
+        "production": {
+          "browserTarget": "test-lib-ui:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "preview": {
+      "executor": "@nrwl/vite:preview-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "test-lib-ui:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "test-lib-ui:build:development"
+        },
+        "production": {
+          "buildTarget": "test-lib-ui:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/test-vue-tsc/test-lib/ui/src/**/*.{ts,tsx,vue}"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/test-vue-tsc/test-lib/ui/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "test:debug": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node --inspect-brk {workspaceRoot}/node_modules/.bin/jest --runInBand"
+      }
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "vue-tsc -p libs/test-vue-tsc/test-lib/ui/tsconfig.json --noEmit"
+      }
+    }
+  }
+}

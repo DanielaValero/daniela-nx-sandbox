@@ -1,0 +1,17 @@
+{
+  "extends": ["../../tsconfig.base.json"],
+  "compilerOptions": {
+    "composite": true,
+    "allowJs": true,
+    "baseUrl": ".",
+    "outDir": "./dist/out-tsc",
+    "types": ["jest", "node", "@testing-library/jest-dom"]
+  },
+  "exclude": ["../../../dist/", "**/node_modules"],
+  "include": [
+    "jest.config.ts",
+    "src/**/*.test.ts",
+    "src/**/*.spec.ts",
+    "src/**/*.d.ts"
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "name": "@daniela-nx-sandbox/<%= name %>-<%= type %>",
+  "version": "0.0.0",
+  "repository": "git@github.com:traderepublic/tr-platform-tools-crm-frontend.git",
+  "type": "module"
+}

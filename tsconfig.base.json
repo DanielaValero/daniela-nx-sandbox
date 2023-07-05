@@ -1,20 +1,32 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "rootDir": ".",
-    "sourceMap": true,
-    "declaration": false,
     "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
+    "allowJs": false,
+    "target": "ESNext",
+    "module": "ESNext",
+    "jsx": "preserve",
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "isolatedModules": true,
+    "noEmit": true,
     "importHelpers": true,
-    "target": "es2015",
-    "module": "esnext",
-    "lib": ["es2020", "dom"],
+    "downlevelIteration": true,
+    "resolveJsonModule": true,
+    "jsxImportSource": "vue",
+    "noImplicitThis": true,
+    "strict": true,
+    "verbatimModuleSyntax": true,
+    "useDefineForClassFields": true,
+    "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "baseUrl": ".",
-    "paths": {}
+    "types": ["vite/client"],
+    "lib": ["DOM", "esnext", "DOM.Iterable", "scripthost"],
+    "typeRoots": ["node_modules/@types", "node_modules"],
+    "rootDir": ".",
+    "baseUrl": "."
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": ["**/*.spec.ts", "dist/", "node_modules"]
 }

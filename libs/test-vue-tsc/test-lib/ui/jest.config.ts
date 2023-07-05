@@ -1,0 +1,48 @@
+import path from 'path';
+const tsConfigFile = path.resolve(__dirname, './tsconfig.spec.json');
+
+const config = {
+  displayName: 'test-lib-ui',
+  preset: '../../../jest.preset.js',
+  moduleFileExtensions: ['vue', 'json', 'ts', 'js'],
+  testPathIgnorePatterns: ['dist'],
+  testMatch: ['**/?(*.)+(spec).[jt]s?(x)'],
+  testEnvironment: 'jsdom',
+  moduleDirectories: ['../../node_modules'],
+  moduleNameMapper: {
+    '@/(.*)$': '<rootDir>/src/$1',
+  },
+  collectCoverageFrom: ['**/*.{ts,vue}', '!**/node_modules/**'],
+  coverageProvider: 'v8',
+  coveragePathIgnorePatterns: ['/src/main.ts', '/src/*/index.ts'],
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
+  extensionsToTreatAsEsm: ['.ts', '.tsx'],
+  transformIgnorePatterns: [
+    '/../../../node_modules/(?!lodash-es|@vue/apollo-composable)',
+  ],
+  transform: {
+    '^.+.vue$': '@vue/vue3-jest',
+    '.+.(css|svg|png|jpg|ttf|woff|woff2)$': 'jest-transform-stub',
+    '^.+\\.(t|j)sx?$': [
+      '@swc/jest',
+      {
+        jsc: {
+          parser: {
+            syntax: 'typescript',
+            decorators: true,
+            tsx: true,
+          },
+          target: 'es2021',
+        },
+        sourceMaps: true,
+      },
+    ],
+  },
+  globals: {
+    'vue-jest': {
+      tsConfig: tsConfigFile,
+    },
+  },
+};
+
+export default config;

@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "new-vue-lib",
+  "type": "object",
+  "properties": {
+    "isShared": {
+      "type": "boolean",
+      "description": "if it is a shared lib.",
+      "default": false,
+      "x-prompt": {
+        "message": "Is it a shared lib?"
+      }
+    },
+    "name": {
+      "type": "string",
+      "description": "Library name",
+      "x-prompt": {
+        "message": " The name of the library. For shared add: 'shared'"
+      }
+    },
+    "type": {
+      "type": "string",
+      "description": "What is the library type? Options: feat, data, ui, util",
+      "enum": [
+        "data",
+        "feat",
+        "ui",
+        "util"
+      ],
+      "default": "feat",
+      "x-prompt": {
+        "message": "Which type of library would you like to generate?  Note: Shared can't be feat.",
+        "type": "list",
+        "items": [
+          {
+            "value": "data",
+            "label": "Data Access"
+          },
+          {
+            "value": "feat",
+            "label": "Feature"
+          },
+          {
+            "value": "util",
+            "label": "Util"
+          },
+          {
+            "value": "ui",
+            "label": "UI"
+          }
+        ]
+      }
+    },
+    "domain": {
+      "type": "string",
+      "description": "Resolve domain where the lib will go",
+      "default": "",
+      "x-prompt": {
+        "message": "Resolve domain where the lib will go? If filled: libs/DOMAIN/name-of-lib/type-of-feat"
+      }
+    }
+  },
+  "required": [
+    "isShared",
+    "type",
+    "name"
+  ]
+}

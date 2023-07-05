@@ -1,0 +1,9 @@
+<script setup lang="ts">
+import HelloWorld from '../components/HelloWorld';
+</script>
+
+<template>
+  <div><hello-world /></div>
+</template>
+
+<style lang="css"></style>

@@ -1,0 +1,19 @@
+{
+  "generators": {
+    "new-ts-lib": {
+      "implementation": "./src/generators/new-ts-lib/generator.ts",
+      "schema": "./src/generators/new-ts-lib/schema.json",
+      "description": "Generator new-ts-lib"
+    },
+    "new-vue-lib": {
+      "implementation": "./src/generators/new-vue-lib/generator.ts",
+      "schema": "./src/generators/new-vue-lib/schema.json",
+      "description": "Generator new-vue-lib"
+    },
+    "standard-lib": {
+      "factory": "./src/generators/standard-lib/generator",
+      "schema": "./src/generators/standard-lib/schema.json",
+      "description": "standard-lib generator"
+    }
+  }
+}

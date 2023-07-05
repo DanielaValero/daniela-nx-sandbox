@@ -1,0 +1,55 @@
+{
+  "extends": ["../../../.eslintrc.json"],
+  "ignorePatterns": [
+    "!**/*",
+    "dist",
+    "coverage",
+    "node_modules",
+    ".eslintrc.js"
+  ],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx", "*.vue"],
+      "globals": {
+        "__dirname": true,
+        "module": true,
+        "process": true
+      },
+      "env": {
+        "browser": true,
+        "es2020": true
+      },
+      "rules": {}
+    },
+    {
+      "files": ["*.vue"],
+      "extends": [
+        "eslint:recommended",
+        "plugin:vue/vue3-recommended",
+        "@vue/eslint-config-typescript",
+        "@vue/typescript/recommended",
+        "plugin:prettier-vue/recommended",
+        "@vue/eslint-config-prettier"
+      ],
+      "rules": {
+        "vue/component-name-in-template-casing": [
+          "error",
+          "kebab-case",
+          {
+            "registeredComponentsOnly": false
+          }
+        ],
+        "vue/html-self-closing": [
+          "error",
+          {
+            "html": {
+              "void": "always",
+              "normal": "always",
+              "component": "always"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

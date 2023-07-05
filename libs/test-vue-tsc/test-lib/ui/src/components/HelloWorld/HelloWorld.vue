@@ -1,0 +1,7 @@
+<script lang="ts" setup></script>
+<template>
+  <div>
+    <p>Hello world</p>
+  </div>
+</template>
+<style lang="css"></style>

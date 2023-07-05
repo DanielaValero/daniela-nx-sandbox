@@ -1,0 +1,10 @@
+{
+  "extends": "../../../../tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "preserveSymlinks": true,
+    "outDir": "../../../dist/out-tsc"
+  },
+  "exclude": ["**/*.spec.ts"],
+  "include": ["**/*.ts", "../util/**/*.ts", "**/*.vue", "**/*.json"]
+}

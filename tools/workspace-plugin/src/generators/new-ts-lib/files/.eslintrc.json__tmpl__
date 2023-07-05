@@ -1,0 +1,33 @@
+{
+  "extends": ["../../../.eslintrc.json"],
+  "ignorePatterns": [
+    "!**/*",
+    "dist",
+    "coverage",
+    "node_modules",
+    ".eslintrc.js"
+  ],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx", "*.vue"],
+      "globals": {
+        "__dirname": true,
+        "module": true,
+        "process": true
+      },
+      "env": {
+        "es2020": true
+      },
+      "rules": {}
+    },
+    {
+      "files": ["*.vue"],
+      "extends": [
+        "eslint:recommended",
+        "@vue/eslint-config-typescript",
+        "@vue/typescript/recommended",
+        "@vue/eslint-config-prettier"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+import path from "path"
+const tsConfigFile =  path.resolve(__dirname, "./tsconfig.spec.json");
+
+
+const config = {
+  displayName: '<%= projectName %>',
+  preset: 'ts-jest',
+  moduleFileExtensions: ['json', 'ts', 'js'],
+  testPathIgnorePatterns: ['dist'],
+  testMatch: ['**/?(*.)+(spec).[jt]s?(x)'],
+  moduleDirectories: ['node_modules'],
+  collectCoverageFrom: ['**/*.{ts}', '!**/node_modules/**'],
+  coverageProvider: 'v8',
+  coveragePathIgnorePatterns: ['/src/main.ts', '/src/*/index.ts'],
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
+  extensionsToTreatAsEsm: ['.ts'],
+  transformIgnorePatterns: [
+    '/../../../node_modules/(?!lodash-es|@vue/apollo-composable)',
+  ],
+  transform: {
+    '^.+\\.(t|j)sx?$': [
+      '@swc/jest',
+      {
+        jsc: {
+          parser: {
+            syntax: 'typescript',
+            decorators: true,
+            tsx: true,
+          },
+          target: 'es2021',
+        },
+        sourceMaps: true,
+      },
+    ],
+  }
+};
+
+export default config;

@@ -1,0 +1,37 @@
+# <%= projectName %>
+
+## Description
+
+_Describe your package here_
+
+
+## Commands
+
+### Build
+```
+npx nx run <%= projectName %>:build
+```
+
+
+### Unit tests
+```
+npx nx run <%= projectName %>:test
+```
+
+### Debug tests
+```
+npx nx run <%= projectName %>:test:debug
+```
+
+### Lint
+```bash
+npx nx run <%= projectName %>:lint
+```
+```bash
+npx nx run <%= projectName %>:lint --fix
+```
+
+### Typecheck
+```bash
+npx nx run <%= projectName %>:typecheck
+```

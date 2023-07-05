@@ -1,0 +1,45 @@
+# <%= projectName %>
+
+## Description
+
+_Describe your package here_
+
+
+## Commands
+
+### Build
+```bash
+npx nx run <%= projectName %>:build
+```
+
+### Run standalone server
+```bash
+npx nx run <%= projectName %>:serve
+```
+### Serve files in dist
+```bash
+npx nx run <%= projectName %>:preview
+```
+
+
+### Unit tests
+```
+npx nx run <%= projectName %>:test
+```
+### Debug tests
+```
+npx nx run <%= projectName %>:test:debug
+```
+
+### Typecheck
+```bash
+npx nx run <%= projectName %>:typecheck
+```
+
+### Lint
+```bash
+npx nx run <%= projectName %>:lint
+```
+```bash
+npx nx run <%= projectName %>:lint --fix
+```
